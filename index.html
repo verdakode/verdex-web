@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verdex - Your Local 3D Printing Marketplace</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400&display=swap');
+
+        :root {
+            --primary-color: #00ff00;
+            --secondary-color: #ff00ff;
+            --background-color: #000011;
+            --text-color: #ffffff;
+        }
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--background-color);
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+        header {
+            background: linear-gradient(45deg, #000033, #003300);
+            color: var(--primary-color);
+            text-align: center;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background:
+                radial-gradient(white, rgba(255,255,255,.2) 2px, transparent 40px),
+                radial-gradient(white, rgba(255,255,255,.15) 1px, transparent 30px),
+                radial-gradient(white, rgba(255,255,255,.1) 2px, transparent 40px);
+            background-size: 550px 550px, 350px 350px, 250px 250px;
+            background-position: 0 0, 40px 60px, 130px 270px;
+            animation: stars 15s linear infinite;
+            z-index: 1;
+        }
+        @keyframes stars {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        h1, h2 {
+            font-family: 'Orbitron', sans-serif;
+            position: relative;
+            z-index: 2;
+        }
+        h1 {
+            font-size: 4rem;
+            margin-bottom: 0;
+            text-shadow: 0 0 10px var(--primary-color);
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        nav a {
+            color: var(--primary-color);
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            margin: 0 0.5rem;
+            border: 1px solid var(--primary-color);
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+        nav a:hover {
+            background-color: var(--primary-color);
+            color: var(--background-color);
+        }
+        main {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        .cta-button {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: var(--background-color);
+            padding: 0.8rem 1.5rem;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+            margin-top: 1rem;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .cta-button:hover {
+            background-color: var(--primary-color);
+            box-shadow: 0 0 15px var(--primary-color);
+            transform: scale(1.05);
+        }
+        .feature {
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background: rgba(0, 50, 0, 0.2);
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0, 255, 0, 0.1);
+        }
+        .feature h2 {
+            color: var(--secondary-color);
+        }
+        .feature ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        .feature li {
+            margin-bottom: 0.5rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+        .feature li::before {
+            content: '•';
+            color: var(--primary-color);
+            position: absolute;
+            left: 0;
+        }
+        footer {
+            background-color: rgba(0, 0, 0, 0.8);
+            color: var(--text-color);
+            text-align: center;
+            padding: 1rem;
+            position: relative;
+        }
+        @media (max-width: 600px) {
+            nav {
+                flex-direction: column;
+            }
+            nav a {
+                margin: 0.5rem 0;
+            }
+            h1 {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Verdex</h1>
+        <p>Your Local 3D Printing Marketplace</p>
+    </header>
+    <nav>
+        <a href="#how-it-works">How It Works</a>
+        <a href="#for-buyers">For Buyers</a>
+        <a href="#for-designers">For Designers</a>
+        <a href="#for-printers">For Printers</a>
+    </nav>
+    <main>
+        <section id="how-it-works" class="feature">
+            <h2>How Verdex Works</h2>
+            <p>Verdex is a revolutionary app connecting local 3D printer owners with people who need items printed. Here's how it works:</p>
+            <ul>
+                <li>Designers upload 3D models to our marketplace</li>
+                <li>Buyers browse and purchase designs</li>
+                <li>Local 3D printer owners (our "Makers") receive print jobs</li>
+                <li>Makers print and deliver items, often within 24 hours</li>
+            </ul>
+            <a href="#" class="cta-button">Join Verdex</a>
+        </section>
+        <section id="for-buyers" class="feature">
+            <h2>For Buyers</h2>
+            <p>Need something 3D printed? Verdex makes it easy and fast:</p>
+            <ul>
+                <li>Browse thousands of 3D printable designs</li>
+                <li>Order with just a few taps</li>
+                <li>Choose from various materials and colors</li>
+                <li>Get your item delivered or pick it up locally</li>
+                <li>Enjoy faster turnaround times than traditional online orders</li>
+            </ul>
+            <a href="#" class="cta-button">Start Shopping</a>
+        </section>
+        <section id="for-designers" class="feature">
+            <h2>For 3D Model Designers</h2>
+            <p>Turn your 3D designs into profit:</p>
+            <ul>
+                <li>Upload your 3D models to our marketplace</li>
+                <li>Set your own prices and earn money on each print</li>
+                <li>Reach a wide audience of local buyers</li>
+                <li>Get feedback and improve your designs</li>
+                <li>No need to handle printing or shipping yourself</li>
+            </ul>
+            <a href="#" class="cta-button">Start Designing</a>
+        </section>
+        <section id="for-printers" class="feature">
+            <h2>For 3D Printer Owners</h2>
+            <p>Put your 3D printer to work and earn money:</p>
+            <ul>
+                <li>Receive local print jobs through the app</li>
+                <li>Set your own schedule and pricing</li>
+                <li>Earn money for each item you print and deliver</li>
+                <li>Build a reputation and grow your local customer base</li>
+                <li>Join a network of makers and share knowledge</li>
+            </ul>
+            <a href="#" class="cta-button">Become a Maker</a>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2023 Verdex. Bringing the future of manufacturing to your neighborhood.</p>
+    </footer>
+</body>
+</html>

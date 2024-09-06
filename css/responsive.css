@@ -1,0 +1,49 @@
+@media (max-width: 768px) {
+    nav {
+        flex-direction: column;
+    }
+
+    nav a {
+        margin: 0.5rem 0;
+    }
+
+    .feature-grid {
+        grid-template-columns: 1fr;
+    }
+
+    main {
+        padding: 1rem;
+    }
+
+    #search {
+        flex-direction: column;
+        width: 100%;
+        margin-top: 1rem;
+    }
+
+    #search-bar {
+        width: 100%;
+        border-radius: 5px;
+        margin-bottom: 0.5rem;
+    }
+
+    #search-button {
+        width: 100%;
+        border-radius: 5px;
+    }
+
+    .item-grid {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 1.5rem;
+    }
+
+    .item-grid {
+        grid-template-columns: 1fr;
+    }
+}

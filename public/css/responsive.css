@@ -1,49 +1,111 @@
 @media (max-width: 768px) {
+    /* Tablet and smaller devices */
+    .container {
+        width: 95%;
+        padding: 0 10px;
+    }
+
     nav {
         flex-direction: column;
+        align-items: center;
+        height: auto;
+        padding: 1rem 0;
     }
 
-    nav a {
-        margin: 0.5rem 0;
-    }
-
-    .feature-grid {
-        grid-template-columns: 1fr;
-    }
-
-    main {
-        padding: 1rem;
+    nav h1 {
+        margin-bottom: 1rem;
+        text-align: center;
     }
 
     #search {
-        flex-direction: column;
+        flex-direction: row;
         width: 100%;
         margin-top: 1rem;
     }
 
     #search-bar {
-        width: 100%;
-        border-radius: 5px;
-        margin-bottom: 0.5rem;
+        width: 70%;
+        border-radius: 5px 0 0 5px;
+        margin-bottom: 0;
     }
 
     #search-button {
-        width: 100%;
-        border-radius: 5px;
+        width: 30%;
+        border-radius: 0 5px 5px 0;
     }
 
     .item-grid {
         grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
         gap: 1rem;
     }
+
+    .item {
+        padding: 1rem;
+    }
+
+    .item h3 {
+        font-size: 1.2rem;
+    }
+
+    .item .description {
+        font-size: 0.9rem;
+    }
+
+    .item .price {
+        font-size: 1rem;
+    }
+
+    .buy-now {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.9rem;
+    }
+
+    main {
+        padding: 1rem 0;
+    }
+
+    #catalog h2 {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+    }
 }
 
 @media (max-width: 480px) {
-    header h1 {
+    /* Smartphone devices */
+    nav h1 {
         font-size: 1.5rem;
+    }
+
+    #search {
+        flex-direction: column;
+    }
+
+    #search-bar, #search-button {
+        width: 100%;
+        border-radius: 5px;
+        margin-bottom: 0.5rem;
     }
 
     .item-grid {
         grid-template-columns: 1fr;
+    }
+
+    .banner {
+        font-size: 0.9rem;
+        padding: 8px;
+    }
+
+    .item {
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .item:hover {
+        transform: none;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    footer {
+        font-size: 0.8rem;
+        padding: 0.5rem 0;
     }
 }

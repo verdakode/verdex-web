@@ -53,7 +53,7 @@ nav h1 {
   background: var(--text-color);
   color: var(--background-color);
   border: none;
-  border-radius: 0 4px 4px 0;
+  border-radius: 10px;
   cursor: pointer;
   transition: var(--transition);
 }
@@ -134,35 +134,42 @@ main {
   margin-bottom: 1rem;
 }
 
-.item .button-link {
-  display: inline-block;
-  margin: 0.5rem 0;
-  color: var(--text-color);
+.button-style {
+  background: var(--text-color);
+  color: var(--background-color);
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: var(--transition);
+  font-weight: 600;
   text-decoration: none;
-    font-weight: 600;
-    transition: var(--transition);
-}
-
-.item .button-link:hover {
-    color: #000;
-}
-
-.item .price {
-    font-size: 1.2rem;
-    color: var(--text-color);
-    font-weight: 600;
-    margin: 0.5rem 0;
+  display: inline-block;
+  font-size: 1rem; /* Set a consistent font size */
+  line-height: 1.5; /* Ensure consistent line height */
+  text-align: center; /* Center the text */
+  min-width: 120px; /* Set a minimum width to ensure consistency */
 }
 
 .buy-now {
-    background: var(--text-color);
-    color: var(--background-color);
-    border: none;
-    padding: 0.5rem 1rem;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: var(--transition);
-    font-weight: 600;
+  background: var(--text-color);
+  color: var(--background-color);
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: var(--transition);
+  font-weight: 600;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 1rem; /* Set a consistent font size */
+  line-height: 1.5; /* Ensure consistent line height */
+  text-align: center; /* Center the text */
+  min-width: 120px; /* Set a minimum width to ensure consistency */
+}
+
+.button-link:hover {
+  color: var(--background-color);
 }
 
 .buy-now:hover {

@@ -1,24 +1,18 @@
-* Global Styles */
+/* Global Styles */
 :root {
-    --primary-color: #3498db;
-    --secondary-color: #2ecc71;
-    --dark-color: #2c3e50;
-    --light-color: #ecf0f1;
-    --banner-color: #f39c12;
+    --text-color: #333;
+    --background-color: #fff;
+    --accent-color: #f39c12;
     --transition: all 0.3s ease;
 }
 
-* {
-    box-sizing: border-box;
+body, html {
     margin: 0;
     padding: 0;
-}
-
-body {
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Arial', sans-serif;
     line-height: 1.6;
-    color: var(--dark-color);
-    background-color: #f4f4f4;
+    color: var(--text-color);
+    background-color: var(--background-color);
 }
 
 .container {
@@ -30,8 +24,8 @@ body {
 
 /* Header Styles */
 header {
-    background: var(--dark-color);
-    color: var(--light-color);
+    background: var(--background-color);
+    color: var(--text-color);
     padding: 1rem 0;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
@@ -39,6 +33,7 @@ header {
 nav {
     display: flex;
     justify-content: space-between;
+    height: 50px;
     align-items: center;
 }
 
@@ -54,15 +49,15 @@ nav h1 {
 #search-bar {
     padding: 0.5rem;
     font-size: 1rem;
-    border: none;
+    border: 1px solid #ddd;
     border-radius: 4px 0 0 4px;
     width: 250px;
 }
 
 #search-button {
     padding: 0.5rem 1rem;
-    background: var(--secondary-color);
-    color: black;
+    background: var(--text-color);
+    color: var(--background-color);
     border: none;
     border-radius: 0 4px 4px 0;
     cursor: pointer;
@@ -70,7 +65,20 @@ nav h1 {
 }
 
 #search-button:hover {
-    background: #27ae60;
+    background: #000;
+}
+
+/* Banner Styles */
+.banner {
+    background-color: var(--accent-color);
+    color: var(--background-color);
+    text-align: center;
+    padding: 10px;
+    font-weight: 600;
+}
+
+.banner i {
+    margin-right: 5px;
 }
 
 /* Main Content Styles */
@@ -79,7 +87,7 @@ main {
 }
 
 #catalog h2 {
-    color: var(--dark-color);
+    color: var(--text-color);
     font-size: 2rem;
     margin-bottom: 1.5rem;
     text-align: center;
@@ -92,7 +100,7 @@ main {
 }
 
 .item {
-    background: white;
+    background: var(--background-color);
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0,0,0,0.1);
     padding: 1.5rem;
@@ -113,7 +121,7 @@ main {
 }
 
 .item h3 {
-    color: var(--dark-color);
+    color: var(--text-color);
     margin-bottom: 0.5rem;
 }
 
@@ -126,26 +134,26 @@ main {
 .item .button-link {
     display: inline-block;
     margin: 0.5rem 0;
-    color: black;
+    color: var(--text-color);
     text-decoration: none;
     font-weight: 600;
     transition: var(--transition);
 }
 
 .item .button-link:hover {
-    color: #2980b9;
+    color: #000;
 }
 
 .item .price {
     font-size: 1.2rem;
-    color: var(--secondary-color);
+    color: var(--text-color);
     font-weight: 600;
     margin: 0.5rem 0;
 }
 
 .buy-now {
-    background: black;
-    color: white;
+    background: var(--text-color);
+    color: var(--background-color);
     border: none;
     padding: 0.5rem 1rem;
     border-radius: 4px;
@@ -154,32 +162,20 @@ main {
     font-weight: 600;
 }
 
-/* Banner Styles */
-.banner {
-    background-color: orange;
-    color: white;
-    text-align: center;
-    padding: 10px;
-    font-weight: 600;
-}
-
-.banner i {
-    margin-right: 5px;
-}
-
 .buy-now:hover {
-    background: #2980b9;
+    background: #000;
 }
 
 /* Footer Styles */
 footer {
-    background: var(--dark-color);
-    color: var(--light-color);
+    background: var(--background-color);
+    color: var(--text-color);
     text-align: center;
     padding: 1rem 0;
     margin-top: 2rem;
+    border-top: 1px solid #ddd;
 }
-
+OC
 /* Responsive Design */
 @media (max-width: 768px) {
     nav {
@@ -197,6 +193,6 @@ footer {
     }
 
     #search-bar {
-        width: 100%;
+        width: 95%;
     }
 }

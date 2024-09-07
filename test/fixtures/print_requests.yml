@@ -1,0 +1,21 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  requester: one
+  description: MyString
+  file_url: MyString
+  material: MyString
+  color: MyString
+  max_price: 9.99
+  needed_by: 2024-09-07
+  status: MyString
+
+two:
+  requester: two
+  description: MyString
+  file_url: MyString
+  material: MyString
+  color: MyString
+  max_price: 9.99
+  needed_by: 2024-09-07
+  status: MyString

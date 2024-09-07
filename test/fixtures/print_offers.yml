@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  print_request: one
+  printer: one
+  price: 9.99
+  estimated_completion_date: 2024-09-07
+  notes: MyText
+  status: MyString
+
+two:
+  print_request: two
+  printer: two
+  price: 9.99
+  estimated_completion_date: 2024-09-07
+  notes: MyText
+  status: MyString

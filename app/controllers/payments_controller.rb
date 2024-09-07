@@ -21,14 +21,18 @@ class PaymentsController < ApplicationController
 
   def checkout_session_params
     {
-      payment_method_types: [ "card" ],
-      line_items: [ {
+      line_items: [{
         price: params[:priceId],
         quantity: 1
-      } ],
+      }],
       mode: "payment",
       success_url: success_url,
-      cancel_url: cancel_url
+      cancel_url: cancel_url,
+      customer_email: params[:email], # Add this line if you have the email
+      shipping_address_collection: {
+        allowed_countries: ['US'] # Add the countries you want to allow
+      },
+      billing_address_collection: 'required' # This will collect the billing address
     }
   end
 

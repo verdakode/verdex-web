@@ -28,7 +28,7 @@
                     <img src="images/seventeensquare.png" alt="Rare Item 1">
                     <h3>17 Square Puzzle</h3>
                     <p class="price">$20.00</p>
-                    <button class="buy-now">Acquire Now</button>
+                    <button class="buy-now" data-price-id="price_1PwE2oP4AzUY99eBAECqeNtM">Acquire Now</button>
                 </div>
             </div>
         </section>
@@ -43,39 +43,37 @@
     <script src="js/main.js"></script>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            var stripe = Stripe('pk_live_51PwDokP4AzUY99eBtVGNLQCxkX4ScKz93XdImlU9wc4uxbQ2eAO2qvPIvvi1z5YR0s5pPES84O3QWBbcFLlBX1V600cMJ8hROZ');
-
-            document.querySelectorAll('.buy-now').forEach(function(button) {
-                button.addEventListener('click', function() {
-                    var priceId = this.getAttribute('data-price-id');
-
-                    fetch('/create-checkout-session', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                        },
-                        body: JSON.stringify({
-                            priceId: priceId,
-                        }),
-                    })
-                    .then(function(response) {
-                        return response.json();
-                    })
-                    .then(function(session) {
-                        return stripe.redirectToCheckout({ sessionId: session.id });
-                    })
-                    .then(function(result) {
-                        if (result.error) {
-                            alert(result.error.message);
-                        }
-                    })
-                    .catch(function(error) {
-                        console.error('Error:', error);
-                    });
-                });
-            });
+      document.addEventListener('DOMContentLoaded', function() {
+        var stripe = Stripe('pk_test_your_publishable_key');
+        document.querySelectorAll('.buy-now').forEach(function(button) {
+          button.addEventListener('click', function() {
+            var priceId = this.getAttribute('data-price-id');
+            fetch('/create-checkout-session', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+                'X-CSRF-Token': document.querySelector('meta[name="csrf-token"]').content
+              },
+              body: JSON.stringify({
+                priceId: priceId
+              })
+            })
+            .then(function(response) {
+              if (!response.ok) {
+                throw new Error('Network response was not ok');
+              }
+              return response.json();
+            })
+              .then(function(session) {
+                return stripe.redirectToCheckout({ sessionId: session.id });
+              })
+              .catch(function(error) {
+                console.error('Error:', error);
+                alert('There was an error processing your payment. Please try again.');
+              });
+          });
         });
+      });
     </script>
 </body>
 </html>

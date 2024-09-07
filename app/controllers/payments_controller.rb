@@ -1,25 +1,51 @@
 # app/controllers/payments_controller.rb
 
-# Handles creation of Stripe Checkout sessions
+# Handles Stripe payment processing and checkout session creation
 class PaymentsController < ApplicationController
   def create_checkout_session
-    # Set up Stripe API key
     Stripe.api_key = ENV["STRIPE_SECRET_KEY"]
 
-    # Create a Stripe Checkout session
-    session = Stripe::Checkout::Session.create({
-      payment_method_types: ["card"],
-      line_items: [{
-        price: params[:price_id],
-        quantity: 1,
-      }],
-      mode: "payment",
-      success_url: "#{request.base_url}/success",
-      cancel_url: "#{request.base_url}/cancel",
-    })
-
-    render json: { id: session.id }
+    create_session
+    render json: { id: @session.id }
   rescue Stripe::StripeError => error
+    handle_stripe_error(error)
+  rescue StandardError => error
+    handle_unexpected_error(error)
+  end
+
+  private
+
+  def create_session
+    @session = Stripe::Checkout::Session.create(checkout_session_params)
+  end
+
+  def checkout_session_params
+    {
+      payment_method_types: [ "card" ],
+      line_items: [ {
+        price: params[:priceId],
+        quantity: 1
+      } ],
+      mode: "payment",
+      success_url: success_url,
+      cancel_url: cancel_url
+    }
+  end
+
+  def success_url
+    "#{request.base_url}/success"
+  end
+
+  def cancel_url
+    "#{request.base_url}/cancel"
+  end
+
+  def handle_stripe_error(error)
     render json: { error: error.message }, status: :unprocessable_entity
+  end
+
+  def handle_unexpected_error(error)
+    render json: { error: "An unexpected error occurred: #{error.message}" },
+           status: :internal_server_error
   end
 end

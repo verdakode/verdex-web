@@ -4,17 +4,12 @@
         width: 95%;
         padding: 0 10px;
     }
-    header {
-        padding-bottom: 1rem; /* Ensure space for the search bar */
-    }
     nav {
         flex-direction: column;
         align-items: center;
         height: auto;
-        padding: 1rem 0;
     }
     nav h1 {
-        margin-bottom: 1rem;
         text-align: center;
     }
     #search {

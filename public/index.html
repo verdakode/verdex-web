@@ -14,9 +14,6 @@
    </script>
 </head>
 <body>
-  <div class="banner">
-        <p><i class="fas fa-truck"></i> Same Day Delivery available in San Francisco!</p>
-    </div>
 
   <header>
         <div class="container">
@@ -28,67 +25,72 @@
                 </div>
             </nav>
         </div>
-    </header>
+  </header>
 
-    <main>
-        <div class="container">
-            <section id="catalog">
-                <h2>Exclusive Finds</h2>
-                <div class="item-grid">
-                    <div class="item">
-                        <img src="images/seventeensquare.png" alt="Anti-Over-Engineering Puzzle">
-                        <h3>The Anti-Over-Engineering Puzzle</h3>
-                        <p class="description">"Embrace simplicity, haze the overcomplicators!"</p>
-                        <a href="https://www.combinatorics.org/files/Surveys/ds7/ds7v5-2009/ds7-2009.html" class="button-link">
-                            Explore the Math
-                        </a>
-                        <p class="price">$20.00</p>
-                        <button class="buy-now" data-price-id="price_1PwInWP4AzUY99eBKsTcTdzT">Acquire Now</button>
-                    </div>
-                </div>
-            </section>
+  <div class="banner">
+    <p><i class="fas fa-truck"></i> Same Day Delivery available in San Francisco!</p>
+  </div>
+
+
+  <main>
+    <div class="container">
+      <section id="catalog">
+        <h2>Exclusive Finds</h2>
+        <div class="item-grid">
+          <div class="item">
+            <img src="images/seventeensquare.png" alt="Anti-Over-Engineering Puzzle">
+            <h3>The Anti-Over-Engineering Puzzle</h3>
+            <p class="description">"Embrace simplicity, haze your favorite overcomplicators"</p>
+            <a href="https://www.combinatorics.org/files/Surveys/ds7/ds7v5-2009/ds7-2009.html" class="button-link">
+              Explore the Math
+            </a>
+            <p class="price">$20.00</p>
+            <button class="buy-now" data-price-id="price_1PwInWP4AzUY99eBKsTcTdzT">Acquire Now</button>
+          </div>
         </div>
-    </main>
+      </section>
+    </div>
+  </main>
 
-    <footer>
-        <p>&copy; 2023 Verdex.</p>
-    </footer>
+  <footer>
+    <p>&copy; 2023 Verdex.</p>
+  </footer>
 
-    <script src="https://js.stripe.com/v3/"></script>
+  <script src="https://js.stripe.com/v3/"></script>
 
-    <script src="js/main.js"></script>
+  <script src="js/main.js"></script>
 
-    <script>
-      document.addEventListener('DOMContentLoaded', function() {
-        var stripe = Stripe('pk_live_51PwDokP4AzUY99eBtVGNLQCxkX4ScKz93XdImlU9wc4uxbQ2eAO2qvPIvvi1z5YR0s5pPES84O3QWBbcFLlBX1V600cMJ8hROZ');
-        document.querySelectorAll('.buy-now').forEach(function(button) {
-          button.addEventListener('click', function() {
-            var priceId = this.getAttribute('data-price-id');
-            fetch('/create-checkout-session', {
-              method: 'POST',
-              headers: {
-                'Content-Type': 'application/json',
-              },
-              body: JSON.stringify({
-                priceId: priceId
-              })
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var stripe = Stripe('pk_live_51PwDokP4AzUY99eBtVGNLQCxkX4ScKz93XdImlU9wc4uxbQ2eAO2qvPIvvi1z5YR0s5pPES84O3QWBbcFLlBX1V600cMJ8hROZ');
+      document.querySelectorAll('.buy-now').forEach(function(button) {
+        button.addEventListener('click', function() {
+          var priceId = this.getAttribute('data-price-id');
+          fetch('/create-checkout-session', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              priceId: priceId
             })
+          })
             .then(function(response) {
               if (!response.ok) {
                 throw new Error('Network response was not ok');
               }
               return response.json();
             })
-              .then(function(session) {
-                return stripe.redirectToCheckout({ sessionId: session.id });
-              })
-              .catch(function(error) {
-                console.error('Error:', error);
-                alert('There was an error processing your payment. Please try again.');
-              });
-          });
+            .then(function(session) {
+              return stripe.redirectToCheckout({ sessionId: session.id });
+            })
+            .catch(function(error) {
+              console.error('Error:', error);
+              alert('There was an error processing your payment. Please try again.');
+            });
         });
       });
-    </script>
+    });
+  </script>
 </body>
 </html>

@@ -44,7 +44,7 @@
 
     <script>
       document.addEventListener('DOMContentLoaded', function() {
-        var stripe = Stripe('pk_test_your_publishable_key');
+        var stripe = Stripe('pk_live_51PwDokP4AzUY99eBtVGNLQCxkX4ScKz93XdImlU9wc4uxbQ2eAO2qvPIvvi1z5YR0s5pPES84O3QWBbcFLlBX1V600cMJ8hROZ');
         document.querySelectorAll('.buy-now').forEach(function(button) {
           button.addEventListener('click', function() {
             var priceId = this.getAttribute('data-price-id');
@@ -52,7 +52,6 @@
               method: 'POST',
               headers: {
                 'Content-Type': 'application/json',
-                'X-CSRF-Token': document.querySelector('meta[name="csrf-token"]').content
               },
               body: JSON.stringify({
                 priceId: priceId

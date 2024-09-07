@@ -1,6 +1,5 @@
 # config/deploy/production.rb
 
-server "143.198.50.97", user: "ubuntu", roles: %w{app db web}
 
 # server-based syntax
 # ======================

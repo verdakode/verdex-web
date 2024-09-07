@@ -37,7 +37,7 @@ nav h1 {
 #search {
   display: flex;
   flex-grow: 1;
-  margin-left: 1rem;
+  justify-content: flex-end;
 }
 
 #search-bar {
@@ -177,20 +177,4 @@ footer {
   padding: 1rem 0;
   margin-top: 2rem;
   border-top: 1px solid #ddd;
-}
-
-@media (max-width: 768px) {
-  nav {
-    flex-direction: column;
-    align-items: stretch;
-  }
-
-  nav h1 {
-    text-align: center;
-    margin-bottom: 1rem;
-  }
-
-  #search {
-    margin-left: 0;
-  }
 }

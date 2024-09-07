@@ -153,6 +153,19 @@ main {
     font-weight: 600;
 }
 
+/* Banner Styles */
+.banner {
+    background-color: var(--banner-color);
+    color: white;
+    text-align: center;
+    padding: 10px;
+    font-weight: 600;
+}
+
+.banner i {
+    margin-right: 5px;
+}
+
 .buy-now:hover {
     background: #2980b9;
 }

@@ -44,6 +44,10 @@ class PaymentsController < ApplicationController
     "#{request.base_url}/cancel"
   end
 
+  def success
+    render 'payments/success'
+  end
+
   def handle_stripe_error(error)
     render json: { error: error.message }, status: :unprocessable_entity
   end

@@ -12,6 +12,9 @@ Rails.application.routes.draw do
   root 'application#frontend'
   get '*path', to: 'application#frontend', constraints: ->(request) { !request.xhr? && request.format.html? }
 
+  get '/success', to: 'payments#success'
+  get '/cancel', to: 'payments#cancel'
+
   # Defines the root path route ("/")
   # root "posts#index"
 end

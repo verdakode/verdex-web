@@ -13,6 +13,14 @@ class PaymentsController < ApplicationController
     handle_unexpected_error(error)
   end
 
+  def success
+    render 'success', layout: false
+  end
+
+  def test_render
+    render plain: "This is a test render"
+  end
+
   private
 
   def create_session
@@ -44,9 +52,6 @@ class PaymentsController < ApplicationController
     "#{request.base_url}/cancel"
   end
 
-  def success
-    render 'payments/success'
-  end
 
   def handle_stripe_error(error)
     render json: { error: error.message }, status: :unprocessable_entity
@@ -54,6 +59,6 @@ class PaymentsController < ApplicationController
 
   def handle_unexpected_error(error)
     render json: { error: "An unexpected error occurred: #{error.message}" },
-           status: :internal_server_error
+      status: :internal_server_error
   end
 end

@@ -5,16 +5,15 @@ Rails.application.routes.draw do
   # Can be used by load balancers and uptime monitors to verify that the app is live.
   get "up" => "rails/health#show", as: :rails_health_check
 
+  # Set root path to serve index.html
+  root 'home#index'
+
   # get api routes
   post 'create-checkout-session', to: 'payments#create_checkout_session'
-
-  # Serve frontend
-  root 'application#frontend'
-  get '*path', to: 'application#frontend', constraints: ->(request) { !request.xhr? && request.format.html? }
-
   get '/success', to: 'payments#success'
   get '/cancel', to: 'payments#cancel'
+  get '/test_render', to: 'payments#test_render'
 
-  # Defines the root path route ("/")
+ # Defines the root path route ("/")
   # root "posts#index"
 end

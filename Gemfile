@@ -9,6 +9,8 @@ gem "puma", ">= 5.0"
 
 gem 'stripe'
 
+gem 'rack-cors'
+
 gem 'vite_rails'
 
 gem 'bcrypt'

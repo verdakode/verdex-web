@@ -15,23 +15,21 @@
    </script>
 </head>
 <body>
-
   <header>
-        <div class="container">
-            <nav>
-                <h1>Verdex</h1>
-                <div id="search">
-                    <input type="text" id="search-bar" placeholder="Discover rare treasures...">
-                    <button id="search-button"><i class="fas fa-search"></i></button>
-                </div>
-            </nav>
+    <div class="container">
+      <nav>
+        <h1>Verdex</h1>
+        <div id="search">
+          <input type="text" id="search-bar" placeholder="Discover rare treasures...">
+          <button id="search-button"><i class="fas fa-search"></i></button>
         </div>
+      </nav>
+    </div>
   </header>
 
   <div class="banner">
     <p><i class="fas fa-truck"></i> Same Day Delivery available in San Francisco!</p>
   </div>
-
 
   <main>
     <div class="container">
@@ -40,7 +38,7 @@
         <div class="item-grid">
           <div class="item">
             <div class="image-container">
-              <img src="images/seventeensquare1.png" alt="Anti-Over-Engineering Puzzle" onerror="this.onerror=null; this.src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNk+A8AAQUBAScY42YAAAAASUVORK5CYII='; this.style='width: 100%; height: 100%; object-fit: cover; background-color: #cccccc;'; console.error('Anti-Over-Engineering Puzzle image failed to load, using placeholder');">
+              <img src="images/seventeensquare1.png" alt="Anti-Over-Engineering Puzzle" loading="lazy">
             </div>
             <h3>The Anti-Over-Engineering Puzzle</h3>
             <p class="description">"think better not more"</p>
@@ -49,12 +47,9 @@
             </a>
             <button class="buy-now" data-price-id="price_1PwInWP4AzUY99eBKsTcTdzT">Acquire Now</button>
           </div>
-          <div id="tomcat-item" class="item" style="display: block !important;">
+          <div class="item">
             <div class="image-container">
-              <img
-                  src="images/f14tomcatkey1.png"
-                  alt="F-14 Tomcat Keyring Holder"
-                  onerror="this.onerror=null; this.src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNk+A8AAQUBAScY42YAAAAASUVORK5CYII='; this.style='width: 100%; height: 100%; object-fit: cover; background-color: #cccccc;'; console.error('F-14 Tomcat image failed to load, using placeholder');">
+              <img src="images/f14tomcatkey1.png" alt="F-14 Tomcat Keyring Holder" loading="lazy">
             </div>
             <h3>F-14 Tomcat Keyring Holder</h3>
             <p class="description">"the only way you should ever hang up keys"</p>
@@ -66,38 +61,14 @@
     </div>
   </main>
 
-  <button class="buy-now" data-price-id="price_1Pxo1gP4AzUY99eBLJKu6zvU">Buy Tomcat</button>
   <footer>
     <p>&copy; 2024 Verdex.</p>
   </footer>
 
-  <script src="https://js.stripe.com/v3/"></script>
-
-  <script src="js/main.js"></script>
-
   <script>
-    document.addEventListener('DOMContentLoaded', (event) => {
-      const tomcatItem = document.getElementById('tomcat-item');
-      if (tomcatItem) {
-        console.log('Tomcat item is present in the DOM');
-        const computedStyle = window.getComputedStyle(tomcatItem);
-        console.log('Tomcat item display style:', computedStyle.display);
-      } else {
-        console.error('Tomcat item is missing from the DOM');
-      }
-    });
-
-    // Force item to be visible after a short delay
-    setTimeout(() => {
-      const tomcatItem = document.getElementById('tomcat-item');
-      if (tomcatItem) {
-        tomcatItem.style.display = 'block';
-        console.log('Forced Tomcat item to be visible');
-      }
-    }, 1000);
-
     document.addEventListener('DOMContentLoaded', function() {
       var stripe = Stripe('pk_live_51PwDokP4AzUY99eBtVGNLQCxkX4ScKz93XdImlU9wc4uxbQ2eAO2qvPIvvi1z5YR0s5pPES84O3QWBbcFLlBX1V600cMJ8hROZ');
+
       document.querySelectorAll('.buy-now').forEach(function(button) {
         button.addEventListener('click', function() {
           var priceId = this.getAttribute('data-price-id');
@@ -125,6 +96,19 @@
             });
         });
       });
+    });
+
+    // Image error handling
+    document.querySelectorAll('.image-container img').forEach(img => {
+      img.onerror = function() {
+        this.onerror = null;
+        this.src = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNk+A8AAQUBAScY42YAAAAASUVORK5CYII=';
+        this.style.width = '100%';
+        this.style.height = '100%';
+        this.style.objectFit = 'cover';
+        this.style.backgroundColor = '#cccccc';
+        console.error(`${this.alt} image failed to load, using placeholder`);
+      };
     });
   </script>
 </body>
